@@ -1,7 +1,7 @@
 //Intenta separar los eventos en este archivo.
 import { filterDishes } from "./components/searcher.js";
 import { products } from "./data/data.js";
-
+import { addDishToCart } from "./components/cart.js";
 const filtersContainer = document.querySelector(".filters-container")
 
 filtersContainer.addEventListener("click", (e) => {
@@ -17,3 +17,9 @@ filtersContainer.addEventListener("click", (e) => {
         filterDishes(category, products, displayAll);
     }
 })
+//VERSIÓN 1 se hace cada vez que se cambia filtro
+
+const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addButton =>{
+    addButton.addEventListener('click', addDishToCart);
+});
+export{addButtons}

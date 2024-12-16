@@ -1,6 +1,7 @@
 //DEBE imprimir en pantalla la información de filtros.
 import {filters, products} from "../data/data.js"
 import { filterDishes } from "./searcher.js"
+import { addButtons } from "../events.js"
 
 const filtersContainer = document.querySelector(".filters-container")
 const productsContainer = document.querySelector(".products-container")
@@ -38,12 +39,10 @@ function printDishes (filteredProducts) {
                 <h5>${product.price}€</h5>
                 <button class="add-button">Añadir</button>
             </div>
-        
         `
         productsContainer.appendChild(addProduct)
     });
-
-
+    addButtons();
 }
 printDishes(products)
 export {addFilters, printDishes}
