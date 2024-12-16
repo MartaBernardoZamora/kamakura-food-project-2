@@ -26,4 +26,13 @@ const addDishToCart = (event) =>{
                         </div>`
     document.getElementById('cart-products').append(dishContainer)
 };
-export{addDishToCart}
+const isDishInCart = (event) => {
+    const productsInCart=[...document.querySelectorAll('.cart-container')];
+    if(productsInCart.length > 0){
+        let dishId = event.target.closest('.product-container').dataset.id;
+        if(!productsInCart.some(dish => dish.dataset.id==dishId)){
+            addDishToCart(event);
+        }else alert('El plato ya está en el carrito');
+    } else addDishToCart(event);
+}
+export{isDishInCart}
