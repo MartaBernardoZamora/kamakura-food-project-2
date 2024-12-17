@@ -27,8 +27,4 @@ const addDishToCart = (event) =>{
     document.getElementById('cart-products').append(dishContainer)
 };
 
-
-
-
-
 export{addDishToCart}

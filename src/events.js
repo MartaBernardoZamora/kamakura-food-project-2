@@ -23,9 +23,6 @@ const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addBut
     addButton.addEventListener('click', addDishToCart);
 });
 
-document.getElementById("cart").addEventListener('click', function() {
-    console.log ('¡Haz hecho clic en el botón!');
-});
 
 document.getElementById("cart").addEventListener('click', function() {
     // Cambiar display de 'none' a 'flex'
