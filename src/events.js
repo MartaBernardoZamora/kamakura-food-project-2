@@ -4,7 +4,7 @@ import { products } from "./data/data.js";
 import { isDishInCart, changeQuantity } from "./components/cart.js";
 const filtersContainer = document.querySelector(".filters-container")
 
-filtersContainer.addEventListener("click", (e) => {
+filtersContainer?.addEventListener("click", (e) => {
     if (e.target.classList.contains("filter")) {
         const category = e.target.textContent.trim();
         let displayAll;
@@ -28,7 +28,7 @@ function eventbuttonsgive(){
     })
     }
 
-document.getElementById("cart").addEventListener('click', function() {
+document.getElementById("cart")?.addEventListener('click', function() {
    if (document.getElementById("cart-container").style.display === 'flex') {
     document.getElementById("cart-container").style.display ='none'
    } else {document.getElementById("cart-container").style.display = 'flex'}

@@ -2,7 +2,7 @@
     "name": "js-kamakura-food",
     "version": "1.0.0",
     "description": "Kamakura Food",
-    "main": "./src/menu.js",
+    "main": "./src/events.js",
     "type": "module",
     "scripts": {
         "dev": "vite",

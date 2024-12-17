@@ -1,9 +1,7 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../data/data.js";
 import { eventbuttonsgive } from "../events.js";
-const cartInicialClean = () => {
-    document.querySelector('#cart-products > .cart-container').remove();
-}
+const cartInicialClean = () => document.querySelector('#cart-products > .cart-container')?.remove();
 cartInicialClean();
 const addDishToCart = (dishId) =>{
     document.querySelector('#cart-products h3').style.display ="none";
