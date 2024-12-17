@@ -32,13 +32,11 @@ const isDishInCart = (event) => {
         addDishToCart(dishId);
     }else alert('El plato ya está en el carrito');
 }
-export{isDishInCart}
-
 function blockNegativeQuantity(quantity){
     if (quantity < 0) {
-    return 0;
-} 
-return quantity;
+        return 0;
+    }
+    return quantity;
 }
 function changeQuantity(button){
     const quantityDiv = button.closest('.quantity-container');
@@ -59,4 +57,4 @@ function changeQuantity(button){
 
 };
 
-export{addDishToCart, changeQuantity}
+export{blockNegativeQuantity, isDishInCart, changeQuantity}

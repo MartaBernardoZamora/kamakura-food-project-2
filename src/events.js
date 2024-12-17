@@ -22,7 +22,6 @@ const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addBut
     addButton.addEventListener('click', isDishInCart);
 });
 function eventbuttonsgive(){
-
     const buttons = document.querySelectorAll(".quantity-container button");
     buttons.forEach((button) => { 
        button.onclick = ()=>changeQuantity(button)
