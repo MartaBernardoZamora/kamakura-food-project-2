@@ -25,3 +25,8 @@ function changeQuantity(button){
 } 
 
 export{changeQuantity}
+
+document.getElementById('close-button').addEventListener('click', function() {
+    
+    document.getElementById('text-container').remove();
+});
