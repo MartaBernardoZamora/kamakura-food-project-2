@@ -26,4 +26,9 @@ const addDishToCart = (event) =>{
                         </div>`
     document.getElementById('cart-products').append(dishContainer)
 };
+
+
+
+
+
 export{addDishToCart}

@@ -22,4 +22,16 @@ filtersContainer.addEventListener("click", (e) => {
 const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addButton =>{
     addButton.addEventListener('click', addDishToCart);
 });
+
+document.getElementById("cart").addEventListener('click', function() {
+    console.log ('¡Haz hecho clic en el botón!');
+});
+
+document.getElementById("cart").addEventListener('click', function() {
+    // Cambiar display de 'none' a 'flex'
+   if (document.getElementById("cart-container").style.display === 'flex') {
+    document.getElementById("cart-container").style.display ='none'
+   } else {document.getElementById("cart-container").style.display = 'flex'}
+});
+
 export{addButtons}
