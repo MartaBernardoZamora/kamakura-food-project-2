@@ -1,6 +1,5 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../data/data.js";
-import { filterDishes } from "./searcher.js";
 const cartInicialClean = () => {
     document.querySelector('#cart-products > .cart-container').remove();
 }
@@ -26,6 +25,7 @@ const addDishToCart = (event) =>{
                         </div>`
     document.getElementById('cart-products').append(dishContainer)
 };
+
 const isDishInCart = (event) => {
     const productsInCart=[...document.querySelectorAll('.cart-container')];
     if(productsInCart.length > 0){
