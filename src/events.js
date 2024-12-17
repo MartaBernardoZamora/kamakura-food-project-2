@@ -30,4 +30,13 @@ function eventbuttonsgive(){
        button.onclick = ()=>changeQuantity(button)
     })
     }
+
+
+document.getElementById("cart").addEventListener('click', function() {
+    // Cambiar display de 'none' a 'flex'
+   if (document.getElementById("cart-container").style.display === 'flex') {
+    document.getElementById("cart-container").style.display ='none'
+   } else {document.getElementById("cart-container").style.display = 'flex'}
+});
+
 export{addButtons, eventbuttonsgive}
