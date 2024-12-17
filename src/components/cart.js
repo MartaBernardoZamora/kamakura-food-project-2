@@ -1,5 +1,6 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../data/data.js";
+import { eventbuttonsgive } from "../events.js";
 const cartInicialClean = () => {
     document.querySelector('#cart-products > .cart-container').remove();
 }
@@ -23,7 +24,8 @@ const addDishToCart = (event) =>{
                             <p class="quantity">1</p>
                             <button>-</button>
                         </div>`
-    document.getElementById('cart-products').append(dishContainer)
+    document.getElementById('cart-products').append(dishContainer) 
+    eventbuttonsgive()
 };
 
 const isDishInCart = (event) => {
@@ -36,3 +38,34 @@ const isDishInCart = (event) => {
     } else addDishToCart(event);
 }
 export{isDishInCart}
+
+function blockNegativeQuantity(quantity){
+    if (quantity < 0) {
+    return 0;
+} 
+return quantity;
+}
+
+let quantity = 1;
+
+
+function changeQuantity(button){
+    const quantityDiv = button.closest('.quantity-container');
+
+    const quantityNumDish = quantityDiv.querySelector('.quantity');
+
+    let quantity = parseInt(quantityNumDish.textContent);
+
+    if (button.textContent === "+"){
+        quantity +=1;
+    } else if (button.textContent === "-") {
+        quantity -=1;
+        quantity = blockNegativeQuantity(quantity);
+    }
+
+    quantityNumDish.textContent = quantity;
+
+
+};
+
+export{addDishToCart, changeQuantity}
