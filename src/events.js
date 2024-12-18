@@ -17,7 +17,6 @@ filtersContainer?.addEventListener("click", (e) => {
         filterDishes(category, products, displayAll);
     }
 })
-
 const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addButton =>{
     addButton.addEventListener('click', isDishInCart);
 });
