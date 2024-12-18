@@ -53,8 +53,24 @@ function changeQuantity(button){
     }
 
     quantityNumDish.textContent = quantity;
+
+
 };
-const removeDishFromArray = (dishId) =>{ //tiene que ir a la función de eliminar de Carlota
+
+function removeCartDish (event) {
+    const closeButton = event.target;
+
+    const cartDish = closeButton.closest('.cart-container');
+
+    if (cartDish) {
+        cartDish.remove();
+       removeDishFromArray(cartDish);
+    }
+}
+
+const removeDishFromArray = (cartDish) =>{
+    let dishId = cartDish.dataset.id; 
     productsInCart=productsInCart.filter(dishInArray=> dishInArray !== dishId);
 }
-export{blockNegativeQuantity, isDishInCart, changeQuantity}
+
+export{blockNegativeQuantity, isDishInCart, changeQuantity, removeCartDish}
