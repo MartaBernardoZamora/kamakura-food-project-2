@@ -68,4 +68,14 @@ function changeQuantity(button){
 
 };
 
-export{addDishToCart, changeQuantity}
+function removeCartDish (event) {
+    const closeButton = event.target;
+
+    const cartDish = closeButton.closest('.cart-container');
+
+    if (cartDish) {
+        cartDish.remove();
+        }
+    }
+
+export{addDishToCart, changeQuantity, removeCartDish}

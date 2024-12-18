@@ -1,7 +1,7 @@
 //Intenta separar los eventos en este archivo.
 import { filterDishes } from "./components/searcher.js";
 import { products } from "./data/data.js";
-import { isDishInCart, changeQuantity } from "./components/cart.js";
+import { isDishInCart, changeQuantity, removeCartDish } from "./components/cart.js";
 const filtersContainer = document.querySelector(".filters-container")
 
 filtersContainer.addEventListener("click", (e) => {
@@ -29,7 +29,12 @@ function eventbuttonsgive(){
        // button.addEventListener("click", ()=> changeQuantity(button)) 
        button.onclick = ()=>changeQuantity(button)
     })
-    }
+
+    const allButtons = document.querySelectorAll('.close-button')
+    allButtons.forEach((button) => { 
+        button.addEventListener('click', removeCartDish);
+    });
+}
 
 
 document.getElementById("cart").addEventListener('click', function() {
@@ -38,5 +43,8 @@ document.getElementById("cart").addEventListener('click', function() {
     document.getElementById("cart-container").style.display ='none'
    } else {document.getElementById("cart-container").style.display = 'flex'}
 });
+
+
+
 
 export{addButtons, eventbuttonsgive}
