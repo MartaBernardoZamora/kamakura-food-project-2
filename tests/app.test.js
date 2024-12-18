@@ -11,11 +11,12 @@ describe("testing DOM", () => {
         expect(nav.innerHTML).toBe("Inicio");
     })
     test("Testing funcion blockNegativeQuantity", ()=>{
+
         const numero= -1;
         const respuesta_esperada=0;
         const resultado = blockNegativeQuantity(numero);
         expect(resultado).toBe(respuesta_esperada);
-
     })
+
 
 })
