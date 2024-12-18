@@ -54,5 +54,4 @@ function changeQuantity(button){
 
 
 };
-
 export{blockNegativeQuantity, isDishInCart, changeQuantity}
