@@ -17,16 +17,13 @@ filtersContainer.addEventListener("click", (e) => {
         filterDishes(category, products, displayAll);
     }
 })
-//VERSIÓN 1 se hace cada vez que se cambia filtro
 
 const addButtons = () =>[...document.querySelectorAll('.add-button')].map(addButton =>{
     addButton.addEventListener('click', isDishInCart);
 });
 function eventbuttonsgive(){
-
     const buttons = document.querySelectorAll(".quantity-container button");
     buttons.forEach((button) => { 
-       // button.addEventListener("click", ()=> changeQuantity(button)) 
        button.onclick = ()=>changeQuantity(button)
     })
 
@@ -36,9 +33,7 @@ function eventbuttonsgive(){
     });
 }
 
-
 document.getElementById("cart").addEventListener('click', function() {
-    // Cambiar display de 'none' a 'flex'
    if (document.getElementById("cart-container").style.display === 'flex') {
     document.getElementById("cart-container").style.display ='none'
    } else {document.getElementById("cart-container").style.display = 'flex'}
