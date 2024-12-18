@@ -5,12 +5,9 @@ const cartInicialClean = () => {
     document.querySelector('#cart-products > .cart-container').remove();
 }
 cartInicialClean();
-const addDishToCart = (event) =>{
+const addDishToCart = (dishId) =>{
     document.querySelector('#cart-products h3').style.display ="none";
-    
-    const dishId = event.target.closest('.product-container').dataset.id;
     const dish = products.find(dish => dish.id == dishId);
-    
     const dishContainer=document.createElement("div");
     dishContainer.classList.add('cart-container');
     dishContainer.dataset.id=dishId;
@@ -27,28 +24,20 @@ const addDishToCart = (event) =>{
     document.getElementById('cart-products').append(dishContainer) 
     eventbuttonsgive()
 };
-
+let productsInCart=[]
 const isDishInCart = (event) => {
-    const productsInCart=[...document.querySelectorAll('.cart-container')];
-    if(productsInCart.length > 0){
-        let dishId = event.target.closest('.product-container').dataset.id;
-        if(!productsInCart.some(dish => dish.dataset.id==dishId)){
-            addDishToCart(event);
-        }else alert('El plato ya está en el carrito');
-    } else addDishToCart(event);
+    let dishId = event.target.closest('.product-container').dataset.id;
+    if(!productsInCart.some(dish => dish==dishId)){
+        productsInCart.push(dishId);
+        addDishToCart(dishId);
+    }else alert('El plato ya está en el carrito');
 }
-export{isDishInCart}
-
 function blockNegativeQuantity(quantity){
     if (quantity < 0) {
-    return 0;
-} 
-return quantity;
+        return 0;
+    }
+    return quantity;
 }
-
-let quantity = 1;
-
-
 function changeQuantity(button){
     const quantityDiv = button.closest('.quantity-container');
 
@@ -64,8 +53,8 @@ function changeQuantity(button){
     }
 
     quantityNumDish.textContent = quantity;
-
-
 };
-
-export{addDishToCart, changeQuantity}
+const removeDishFromArray = (dishId) =>{ //tiene que ir a la función de eliminar de Carlota
+    productsInCart=productsInCart.filter(dishInArray=> dishInArray !== dishId);
+}
+export{blockNegativeQuantity, isDishInCart, changeQuantity}
