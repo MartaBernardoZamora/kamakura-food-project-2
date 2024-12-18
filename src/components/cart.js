@@ -28,7 +28,7 @@ let productsInCart=[]
 const isDishInCart = (event) => {
     let dishId = event.target.closest('.product-container').dataset.id;
     if(!productsInCart.some(dish => dish==dishId)){
-        productsInCart=[...dishId];
+        productsInCart.push(dishId);
         addDishToCart(dishId);
     }else alert('El plato ya está en el carrito');
 }
@@ -56,5 +56,7 @@ function changeQuantity(button){
 
 
 };
-
+const removeDishFromArray = (dishId) =>{ //tiene que ir a la función de eliminar de Carlota
+    productsInCart=productsInCart.filter(dishInArray=> dishInArray !== dishId);
+}
 export{blockNegativeQuantity, isDishInCart, changeQuantity}
