@@ -53,8 +53,6 @@ function changeQuantity(button){
     }
 
     quantityNumDish.textContent = quantity;
-
-
 };
 const removeDishFromArray = (dishId) =>{ //tiene que ir a la función de eliminar de Carlota
     productsInCart=productsInCart.filter(dishInArray=> dishInArray !== dishId);
