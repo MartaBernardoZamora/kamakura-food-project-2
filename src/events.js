@@ -38,7 +38,4 @@ document.getElementById("cart")?.addEventListener('click', function() {
    } else {document.getElementById("cart-container").style.display = 'flex'}
 });
 
-
-
-
 export{addButtons, eventbuttonsgive}
