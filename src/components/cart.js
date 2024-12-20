@@ -30,36 +30,41 @@ const isDishInCart = (event) => {
         addDishToCart(dishId);
     }else alert('El plato ya está en el carrito');
 }
-function blockNegativeQuantity(quantity){
-    if (quantity < 0) {
-        return 0;
+function blockNegativeQuantity(quantity, quantityDiv){
+    if (quantity <= 0) {
+        console.log(quantityDiv)
+        removeCartDish(quantityDiv);//nuevo en lo de Carlota
+        //return 0;
     }
     return quantity;
 }
 function changeQuantity(button){
     const quantityDiv = button.closest('.quantity-container');
-
     const quantityNumDish = quantityDiv.querySelector('.quantity');
-
     let quantity = parseInt(quantityNumDish.textContent);
-
     if (button.textContent === "+"){
         quantity +=1;
     } else if (button.textContent === "-") {
         quantity -=1;
-        quantity = blockNegativeQuantity(quantity);
+        //quantity = blockNegativeQuantity(quantity);
+        quantity = blockNegativeQuantity(quantity, quantityDiv);
     }
-
-    quantityNumDish.textContent = quantity;
+    if(quantity!=0){//nuevo
+        quantityNumDish.textContent = quantity;
+    }
 
 
 };
-
-function removeCartDish (event) {
+////nuevo en lo de Carlota
+function removeWithButton(event){
     const closeButton = event.target;
-
+    removeCartDish(closeButton);
+}
+//function removeCartDish (event) {
+    //const closeButton = event.target;
+function removeCartDish (closeButton) {
+    console.log("aqui");
     const cartDish = closeButton.closest('.cart-container');
-
     if (cartDish) {
         cartDish.remove();
        removeDishFromArray(cartDish);
