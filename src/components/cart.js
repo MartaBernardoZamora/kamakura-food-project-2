@@ -62,7 +62,7 @@ function removeCartDish (closeDiv) {
     const cartDish = closeDiv.closest('.cart-container');
     if (cartDish) {
         cartDish.remove();
-        alert("El plato se ha eliminado del carrito")
+        alert("El plato se eliminará del carrito");
         removeDishFromArray(cartDish, productsInCart);
     }
 }
