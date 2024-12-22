@@ -18,7 +18,7 @@ const addDishToCart = (dishId, products) =>{
                             <p class="quantity">1</p>
                             <button>-</button>
                         </div>`
-    return dishContainer;
+    return dishContainer
 };
 let productsInCart=[];
 const isDishInCart = (event) => {
@@ -28,10 +28,11 @@ const isDishInCart = (event) => {
         productsInCart.push(dishId);
         let dishContainer = addDishToCart(dishId, products)
         document.getElementById('cart-products').append(dishContainer);
+        renderTotals()
         eventbuttonsgive();
     }else alert('El plato ya está en el carrito');
 }
-function blockNegativeQuantity(quantity, quantityDiv){
+function blockNegativeQuantity(quantity){
     if (quantity < 0) {
 
         return 0;
@@ -41,12 +42,15 @@ function blockNegativeQuantity(quantity, quantityDiv){
 function changeQuantity(button){
     const quantityDiv = button.closest('.quantity-container');
     const quantityNumDish = quantityDiv.querySelector('.quantity');
+    const cartContainer = button.closest(".cart-container")
     let quantity = parseInt(quantityNumDish.textContent);
     if (button.textContent === "+"){
         quantity +=1;
+        subTotal(quantity, cartContainer)
     } else if (button.textContent === "-") {
         quantity -=1;
         quantity = blockNegativeQuantity(quantity);
+        subTotal(quantity, cartContainer)
     }
     if(quantity>0){
         quantityNumDish.textContent = quantity;
@@ -76,4 +80,30 @@ const removeDishFromArray = (cartDish, productsInCart) =>{
     return productsInCart;
 }
 
+function subTotal (quantity, cartContainer) {
+    
+    const dishUnit = products.find(product => product.id === parseInt(cartContainer.dataset.id));
+    const dishPrice = dishUnit.price * quantity;
+
+    if(cartContainer) {
+        const priceContainer = cartContainer.querySelector("h5")
+        priceContainer.textContent = `${dishPrice} €`
+        renderTotals()
+    }   
+}
+
+function totals () {
+
+    let subTotals = [...document.querySelectorAll(".cart-container h5")]
+    const total = subTotals.reduce((total, dishPrice ) => {
+        return total + parseFloat(dishPrice.textContent.replace('€', ''))
+    }, 0)
+    return total
+}
+
+function renderTotals () {
+
+    document.getElementById("cart-total").textContent = `${totals()} €`
+
+}
 export{blockNegativeQuantity, isDishInCart, changeQuantity, removeWithButton, addDishToCart, removeDishFromArray}
