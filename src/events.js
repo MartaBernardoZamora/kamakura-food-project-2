@@ -28,7 +28,7 @@ function eventbuttonsgive(){
 
     const allButtons = document.querySelectorAll('.close-button')
     allButtons.forEach((button) => { 
-        button.addEventListener('click', removeWithButton);//cambiada la función
+        button.addEventListener('click', removeWithButton);
     });
 }
 
@@ -37,8 +37,5 @@ document.getElementById("cart")?.addEventListener('click', function() {
     document.getElementById("cart-container").style.display ='none'
    } else {document.getElementById("cart-container").style.display = 'flex'}
 });
-
-
-
 
 export{addButtons, eventbuttonsgive}
