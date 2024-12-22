@@ -7,42 +7,41 @@ const filtersContainer = document.querySelector(".filters-container")
 const productsContainer = document.querySelector(".products-container")
 
 function addFilters () {
-    
-    filtersContainer.innerHTML = ""
-    
-    
-    filters.forEach(filter => {
-        const addFilterButton = document.createElement("button")
-        addFilterButton.classList.add("filter")
-        addFilterButton.setAttribute("data-parent", filter)
-        addFilterButton.textContent = filter;
-        filtersContainer.appendChild(addFilterButton);
-    })
-
+    if(filtersContainer){
+        filtersContainer.innerHTML = "";
+        
+        
+        filters.forEach(filter => {
+            const addFilterButton = document.createElement("button")
+            addFilterButton.classList.add("filter")
+            addFilterButton.setAttribute("data-parent", filter)
+            addFilterButton.textContent = filter;
+            filtersContainer.appendChild(addFilterButton);
+        })
+    }
 }
 addFilters();
 
 function printDishes (filteredProducts) {
-
-    productsContainer.innerHTML = "";
-
-
-    filteredProducts.forEach(product => {
-        const addProduct = document.createElement("div")
-        addProduct.classList.add("product-container")
-        addProduct.setAttribute("data-parent", product.category)
-        addProduct.setAttribute("data-id", product.id)
-        addProduct.innerHTML = `
-        <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <div class="price-container">
-                <h5>${product.price}€</h5>
-                <button class="add-button">Añadir</button>
-            </div>
-        `
-        productsContainer.appendChild(addProduct)
-    });
-    addButtons();
+    if(productsContainer){
+        productsContainer.innerHTML = "";
+        filteredProducts.forEach(product => {
+            const addProduct = document.createElement("div")
+            addProduct.classList.add("product-container")
+            addProduct.setAttribute("data-parent", product.category)
+            addProduct.setAttribute("data-id", product.id)
+            addProduct.innerHTML = `
+            <h3>${product.name}</h3>
+                <p>${product.description}</p>
+                <div class="price-container">
+                    <h5>${product.price}€</h5>
+                    <button class="add-button">Añadir</button>
+                </div>
+            `
+            productsContainer?.appendChild(addProduct)
+        });
+        addButtons();
+    }
 }
 printDishes(products)
 export {addFilters, printDishes}
