@@ -2,6 +2,7 @@
 import { filterDishes } from "./components/searcher.js";
 import { products } from "./data/data.js";
 import { isDishInCart, changeQuantity, removeWithButton } from "./components/cart.js";
+import { toggleReceipt } from "./components/receipt.js";
 const filtersContainer = document.querySelector(".filters-container")
 
 filtersContainer?.addEventListener("click", (e) => {
