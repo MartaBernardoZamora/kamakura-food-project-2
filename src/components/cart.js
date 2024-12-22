@@ -68,6 +68,7 @@ function removeCartDish (closeDiv) {
         cartDish.remove();
         alert("El plato se eliminará del carrito");
         removeDishFromArray(cartDish, productsInCart);
+        renderTotals()
     }
 }
 
@@ -83,7 +84,7 @@ const removeDishFromArray = (cartDish, productsInCart) =>{
 function subTotal (quantity, cartContainer) {
     
     const dishUnit = products.find(product => product.id === parseInt(cartContainer.dataset.id));
-    const dishPrice = dishUnit.price * quantity;
+    const dishPrice = Math.round(dishUnit.price * quantity *100) /100;
 
     if(cartContainer) {
         const priceContainer = cartContainer.querySelector("h5")
@@ -102,7 +103,7 @@ function totals () {
 }
 
 function renderTotals () {
-
+    
     document.getElementById("cart-total").textContent = `${totals()} €`
 
 }
