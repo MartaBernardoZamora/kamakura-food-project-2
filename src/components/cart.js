@@ -3,7 +3,7 @@ import { products } from "../data/data.js";
 import { eventbuttonsgive } from "../events.js";
 const cartInicialClean = () => document.querySelector('#cart-products > .cart-container')?.remove();
 cartInicialClean();
-const addDishToCart = (dishId) =>{
+const addDishToCart = (dishId, products) =>{
     const dish = products.find(dish => dish.id == dishId);
     const dishContainer=document.createElement("div");
     dishContainer.classList.add('cart-container');
@@ -26,7 +26,7 @@ const isDishInCart = (event) => {
     let dishId = event.target.closest('.product-container').dataset.id;
     if(!productsInCart.some(dish => dish==dishId)){
         productsInCart.push(dishId);
-        let dishContainer = addDishToCart(dishId)
+        let dishContainer = addDishToCart(dishId, products)
         document.getElementById('cart-products').append(dishContainer);
         eventbuttonsgive();
     }else alert('El plato ya está en el carrito');
@@ -64,13 +64,17 @@ function removeCartDish (event) {
 
     if (cartDish) {
         cartDish.remove();
-       removeDishFromArray(cartDish);
+       removeDishFromArray(cartDish, productsInCart);
     }
 }
 
-const removeDishFromArray = (cartDish) =>{
-    let dishId = cartDish.dataset.id; 
-    productsInCart=productsInCart.filter(dishInArray=> dishInArray !== dishId);
+const removeDishFromArray = (cartDish, productsInCart) =>{
+    let dishId = cartDish.dataset.id;
+    let dishIndex=productsInCart.indexOf(dishId);
+    if (dishIndex > -1) {
+        productsInCart.splice(dishIndex, 1);
+    }
+    return productsInCart;
 }
 
-export{blockNegativeQuantity, isDishInCart, changeQuantity, removeCartDish, addDishToCart}
+export{blockNegativeQuantity, isDishInCart, changeQuantity, removeCartDish, addDishToCart, removeDishFromArray}
