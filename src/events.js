@@ -1,7 +1,7 @@
 //Intenta separar los eventos en este archivo.
 import { filterDishes } from "./components/searcher.js";
 import { products } from "./data/data.js";
-import { isDishInCart, changeQuantity, removeCartDish } from "./components/cart.js";
+import { isDishInCart, changeQuantity, removeWithButton } from "./components/cart.js";
 const filtersContainer = document.querySelector(".filters-container")
 
 filtersContainer?.addEventListener("click", (e) => {
@@ -28,7 +28,7 @@ function eventbuttonsgive(){
 
     const allButtons = document.querySelectorAll('.close-button')
     allButtons.forEach((button) => { 
-        button.addEventListener('click', removeCartDish);
+        button.addEventListener('click', removeWithButton);
     });
 }
 

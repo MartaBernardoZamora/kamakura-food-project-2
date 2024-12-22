@@ -31,7 +31,7 @@ const isDishInCart = (event) => {
         eventbuttonsgive();
     }else alert('El plato ya está en el carrito');
 }
-function blockNegativeQuantity(quantity){
+function blockNegativeQuantity(quantity, quantityDiv){
     if (quantity < 0) {
 
         return 0;
@@ -40,31 +40,30 @@ function blockNegativeQuantity(quantity){
 }
 function changeQuantity(button){
     const quantityDiv = button.closest('.quantity-container');
-
     const quantityNumDish = quantityDiv.querySelector('.quantity');
-
     let quantity = parseInt(quantityNumDish.textContent);
-
     if (button.textContent === "+"){
         quantity +=1;
     } else if (button.textContent === "-") {
         quantity -=1;
         quantity = blockNegativeQuantity(quantity);
     }
-
-    quantityNumDish.textContent = quantity;
-
-
+    if(quantity>0){
+        quantityNumDish.textContent = quantity;
+    }else{
+        removeCartDish (quantityDiv);
+    }
 };
-
-function removeCartDish (event) {
+function removeWithButton(event){
     const closeButton = event.target;
-
-    const cartDish = closeButton.closest('.cart-container');
-
+    removeCartDish(closeButton);
+}
+function removeCartDish (closeDiv) {
+    const cartDish = closeDiv.closest('.cart-container');
     if (cartDish) {
         cartDish.remove();
-       removeDishFromArray(cartDish, productsInCart);
+        alert("El plato se ha eliminado del carrito")
+        removeDishFromArray(cartDish, productsInCart);
     }
 }
 
@@ -77,4 +76,4 @@ const removeDishFromArray = (cartDish, productsInCart) =>{
     return productsInCart;
 }
 
-export{blockNegativeQuantity, isDishInCart, changeQuantity, removeCartDish, addDishToCart, removeDishFromArray}
+export{blockNegativeQuantity, isDishInCart, changeQuantity, removeWithButton, addDishToCart, removeDishFromArray}
