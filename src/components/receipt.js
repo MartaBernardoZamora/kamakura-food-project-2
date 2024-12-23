@@ -59,7 +59,7 @@ function renderReceipt (boughtItems) {
     }).join("")
 
       const productsReceipt = `
-       <button class="close-button" id="close-receipt"><img src="../src/assets/img/close.svg" alt="close"></button>
+       <button class="close-button" id="close-receipt"><img src="/kamakura-food-project-2/src/assets/img/close.svg" alt="close"></button>
         <h2 class="receipt-title">Recibo</h2>
         ${insertHTML}
         <h3 id="receipt-total">Total: ${receiptTotal(boughtItems)} €</h3>
