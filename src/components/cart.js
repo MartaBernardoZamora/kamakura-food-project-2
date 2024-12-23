@@ -1,6 +1,7 @@
 //DEBE contener las funcionalidades del carrito de compras.
 import { products } from "../data/data.js";
 import { eventbuttonsgive } from "../events.js";
+import { addReceipt } from "./receipt.js";
 const cartInicialClean = () => document.querySelector('#cart-products > .cart-container')?.remove();
 cartInicialClean();
 const addDishToCart = (dishId, products) =>{
@@ -29,6 +30,7 @@ const isDishInCart = (event) => {
         let dishContainer = addDishToCart(dishId, products)
         document.getElementById('cart-products').append(dishContainer);
         renderTotals()
+        addReceipt()
         eventbuttonsgive();
     }else alert('El plato ya está en el carrito');
 }
@@ -47,10 +49,12 @@ function changeQuantity(button){
     if (button.textContent === "+"){
         quantity +=1;
         subTotal(quantity, cartContainer)
+        addReceipt()
     } else if (button.textContent === "-") {
         quantity -=1;
         quantity = blockNegativeQuantity(quantity);
         subTotal(quantity, cartContainer)
+        addReceipt()
     }
     if(quantity>0){
         quantityNumDish.textContent = quantity;
@@ -68,6 +72,7 @@ function removeCartDish (closeDiv) {
         cartDish.remove();
         alert("El plato se eliminará del carrito");
         removeDishFromArray(cartDish, productsInCart);
+        renderTotals()
     }
 }
 
@@ -83,7 +88,7 @@ const removeDishFromArray = (cartDish, productsInCart) =>{
 function subTotal (quantity, cartContainer) {
     
     const dishUnit = products.find(product => product.id === parseInt(cartContainer.dataset.id));
-    const dishPrice = dishUnit.price * quantity;
+    const dishPrice = Math.round(dishUnit.price * quantity *100) /100;
 
     if(cartContainer) {
         const priceContainer = cartContainer.querySelector("h5")
@@ -102,7 +107,7 @@ function totals () {
 }
 
 function renderTotals () {
-
+    
     document.getElementById("cart-total").textContent = `${totals()} €`
 
 }
