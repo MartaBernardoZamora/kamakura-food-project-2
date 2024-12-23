@@ -2,6 +2,7 @@
 import { filterDishes } from "./components/searcher.js";
 import { products } from "./data/data.js";
 import { isDishInCart, changeQuantity, removeWithButton } from "./components/cart.js";
+import { toggleReceipt, closeReceipt } from "./components/receipt.js";
 const filtersContainer = document.querySelector(".filters-container")
 
 filtersContainer?.addEventListener("click", (e) => {
@@ -37,5 +38,12 @@ document.getElementById("cart")?.addEventListener('click', function() {
     document.getElementById("cart-container").style.display ='none'
    } else {document.getElementById("cart-container").style.display = 'flex'}
 });
+
+document.querySelector(".proceedPay-button").addEventListener("click", toggleReceipt)
+
+document.getElementById("receipt-container").addEventListener("click", (event) => {
+  if(event.target.matches("#close-receipt"))  
+    closeReceipt()
+})
 
 export{addButtons, eventbuttonsgive}
