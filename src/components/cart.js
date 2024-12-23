@@ -9,7 +9,7 @@ const addDishToCart = (dishId, products) =>{
     const dishContainer=document.createElement("div");
     dishContainer.classList.add('cart-container');
     dishContainer.dataset.id=dishId;
-    dishContainer.innerHTML= `<button class="close-button"><img src="../src/assets/img/close.svg" alt="close"></button>
+    dishContainer.innerHTML= `<button class="close-button"><img src="/kamakura-food-project-2/src/assets/img/close.svg" alt="close"></button>
                         <div class="text-container">
                             <h3>${dish.name}</h3>
                             <h5>${dish.price} €</h5>
