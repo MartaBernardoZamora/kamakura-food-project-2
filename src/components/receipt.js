@@ -3,7 +3,7 @@
 
 function receiptTempalteRemove () {
 
-    document.getElementById("receipt-product").remove()
+    document.getElementById("receipt-product")?.remove()
 
 }
 receiptTempalteRemove()
