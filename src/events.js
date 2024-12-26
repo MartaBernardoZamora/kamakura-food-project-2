@@ -39,9 +39,9 @@ document.getElementById("cart")?.addEventListener('click', function() {
    } else {document.getElementById("cart-container").style.display = 'flex'}
 });
 
-document.querySelector(".proceedPay-button").addEventListener("click", toggleReceipt)
+document.querySelector(".proceedPay-button")?.addEventListener("click", toggleReceipt)
 
-document.getElementById("receipt-container").addEventListener("click", (event) => {
+document.getElementById("receipt-container")?.addEventListener("click", (event) => {
   if(event.target.matches("#close-receipt"))  
     closeReceipt()
 })
